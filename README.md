@@ -1,4 +1,4 @@
-# SmartUI SDK Sample for Cypress
+# SmartUI SDK Sample for Cypress — TestMu AI (Formerly LambdaTest)
 
 Welcome to the SmartUI SDK sample for Cypress. This repository demonstrates how to integrate SmartUI visual regression testing with Cypress.
 
@@ -40,7 +40,7 @@ cd smartui-cypress-sdk-sample
 
 ### Install Dependencies
 
-Install required NPM modules for LambdaTest Smart UI Cypress SDK:
+Install required NPM modules for TestMu AI Smart UI Cypress SDK:
 
 ```bash
 npm i @lambdatest/smartui-cli @lambdatest/cypress-driver cypress@^13
@@ -296,8 +296,27 @@ After running the tests, visit your SmartUI project dashboard to view the captur
 
 ## Additional Resources
 
-- [SmartUI Cypress Onboarding Guide](https://www.lambdatest.com/support/docs/smartui-onboarding-cypress/)
+- [SmartUI Cypress Onboarding Guide](https://www.testmuai.com/support/docs/smartui-onboarding-cypress/)
 - [Cypress Documentation](https://docs.cypress.io/)
-- [LambdaTest Cypress Documentation](https://www.lambdatest.com/support/docs/cypress-testing/)
+- [TestMu AI Cypress Documentation](https://www.testmuai.com/support/docs/cypress-testing/)
 - [SmartUI Dashboard](https://smartui.lambdatest.com/)
-- [LambdaTest Community](https://community.lambdatest.com/)
+- [TestMu AI Community](https://community.testmuai.com/)
+
+## 🚀 [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/)
+
+👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, LambdaTest has officially rebranded to TestMu AI. We have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
+
+Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
+
+**🔄 Our Rebrand Journey**
+
+We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
+
+**✨ Specialties**
+
+- 🤖 AI-Native Test Execution (Formerly LambdaTest)
+- ⚡ Autonomous Test Automation
+- 🌐 Cross-Browser & Mobile Testing
+- 📊 Unified Quality Intelligence
+
+👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
