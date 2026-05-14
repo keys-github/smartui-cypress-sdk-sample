@@ -1,332 +1,115 @@
-# SmartUI SDK Sample for Cypress — TestMu AI (Formerly LambdaTest)
+# Run SmartUI Visual Tests with Cypress on TestMu AI (Formerly LambdaTest)
 
-Welcome to the SmartUI SDK sample for Cypress. This repository demonstrates how to integrate SmartUI visual regression testing with Cypress.
+<p align="center">
+  <a href="https://www.testmuai.com/"><img src="https://img.shields.io/badge/MADE%20BY%20TestMu%20AI-000000.svg?style=for-the-badge&labelColor=000" alt="Made by TestMu AI"></a>
+  <a href="https://www.npmjs.com/package/cypress"><img src="https://img.shields.io/npm/v/cypress.svg?style=for-the-badge&labelColor=000000" alt="Cypress version"></a>
+  <a href="https://community.testmuai.com/"><img src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&labelColor=000000" alt="Community"></a>
+</p>
 
-## Repository Structure
+## Getting Started
 
-```
-smartui-cypress-sdk-sample/
-├── cypress/
-│   └── e2e/
-│       └── smartuiSDKLocal.cy.js    # Test file
-├── cypress.config.js                # Cypress configuration
-├── package.json                     # Dependencies
-└── smartui-web.json                # SmartUI config (create with npx smartui config:create)
-```
+[TestMu AI](https://www.testmuai.com/) (Formerly LambdaTest) is the world's first full-stack AI Agentic Quality Engineering platform that empowers teams to test intelligently, smarter, and ship faster. Built for scale, it offers a full-stack testing cloud with 10K+ real devices and 3,000+ browsers. With AI-native test management, MCP servers, and agent-based automation, TestMu AI supports Selenium, Appium, Playwright, and all major frameworks. 
 
-## 1. Prerequisites and Environment Setup
+With TestMu AI (Formerly LambdaTest), you can run SmartUI visual regression tests with Cypress on real browsers. This sample shows how to configure Cypress + SmartUI to run on the TestMu AI cloud.
+
+- [Sign up on TestMu AI](https://www.testmuai.com/register/) (Formerly LambdaTest).
+- Follow the [TestMu AI Documentation](https://www.testmuai.com/support/docs/) for the full setup walkthrough.
 
 ### Prerequisites
 
-- Node.js installed
-- Cypress >= 10.0.0 (SmartUI SDK only supports Cypress versions >= 10.0.0)
-- Chrome browser (for Local tests)
+- Node.js and npm (latest stable). Cypress >= 10.0.0
+- A TestMu AI (Formerly LambdaTest) account with your username and access key
 
-### Environment Setup
+### Setup
 
-**For Local:**
-```bash
-export PROJECT_TOKEN='your_project_token'
-```
-
-## 2. Initial Setup and Dependencies
-
-### Clone the Repository
+Clone and install dependencies:
 
 ```bash
-git clone https://github.com/LambdaTest/smartui-cypress-sdk-sample
-cd smartui-cypress-sdk-sample
-```
-
-### Install Dependencies
-
-Install required NPM modules for TestMu AI Smart UI Cypress SDK:
-
-```bash
+git clone https://github.com/LambdaTest/smartui-cypress-sdk-sample && cd smartui-cypress-sdk-sample
 npm i @lambdatest/smartui-cli @lambdatest/cypress-driver cypress@^13
 ```
 
-**Dependencies included:**
-- `@lambdatest/smartui-cli` - SmartUI CLI
-- `@lambdatest/cypress-driver` - SmartUI Cypress driver
-- `cypress@^13` - Cypress framework
+Set your credentials as environment variables.
 
-### Configure Cypress Support File
-
-Add the following import to your `cypress/support/e2e.js` file:
-
-```javascript
-import '@lambdatest/cypress-driver'
-```
-
-### Create SmartUI Configuration
+**macOS / Linux:**
 
 ```bash
-npx smartui config:create smartui-web.json
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+export LT_TUNNEL="YOUR_TUNNEL_NAME"
+export PROJECT_TOKEN="YOUR_PROJECT_TOKEN"
 ```
 
-## 3. Steps to Integrate Screenshot Commands into Codebase
-
-The SmartUI screenshot function is already implemented in the repository.
-
-**Test File** (`cypress/e2e/smartuiSDKLocal.cy.js`):
-```javascript
-describe('Test Case name', () => {
-  beforeEach(() => {
-    cy.visit('Required URL')
-  })
-
-  it('SmartUI Snapshot', () => {
-    cy.smartuiSnapshot('Screenshot Name');
-  })
-})
-```
-
-**Note**: The code is already configured and ready to use. You can modify the URL and screenshot name if needed.
-
-## 4. Execution and Commands
-
-### Local Execution
+**Windows:**
 
 ```bash
-npx smartui exec -- npx cypress run --spec cypress/e2e/smartuiSDKLocal.cy.js --browser chrome --headed
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR_ACCESS_KEY"
+set LT_TUNNEL="YOUR_TUNNEL_NAME"
+set PROJECT_TOKEN="YOUR_PROJECT_TOKEN"
 ```
 
-**Note**: The `--config` flag is optional if your config file is named `smartui-web.json` and located in the current directory. If you need to specify a different config file, use: `npx smartui --config <path> exec -- npx cypress run --spec cypress/e2e/smartuiSDKLocal.cy.js --browser chrome --headed`
+### Run tests
 
-## Test Files
-
-### Test File (`cypress/e2e/smartuiSDKLocal.cy.js`)
-
-- Runs Cypress locally using Chrome
-- Requires Chrome browser installed
-- Takes screenshot with name: `Screenshot Name`
-
-## Configuration
-
-### Cypress Config (`cypress.config.js`)
-
-The Cypress configuration file is pre-configured for SmartUI integration.
-
-### SmartUI Config (`smartui-web.json`)
-
-Create the SmartUI configuration file using:
 ```bash
-npx smartui config:create smartui-web.json
+npx smartui --config smartui-web.json exec -- npx cypress run
 ```
 
-The default configuration includes:
-- Browsers: chrome, firefox, safari, edge
-- Viewports: 1920, 1366, 360 (full page screenshots by default)
-- Optional: `waitForPageRender` and `waitForTimeout` for slow-loading pages
+View results on your TestMu AI dashboard.
 
-## Best Practices
+### Local testing with TestMu AI Tunnel
 
-### Screenshot Naming
+To test locally hosted apps, set up the TestMu AI tunnel. OS-specific guides:
 
-- Use descriptive, unique names for each screenshot
-- Include test context (e.g., `login-form-filled`, `checkout-step-2`)
-- Avoid special characters
-- Use consistent naming conventions
+- [Local Testing on Windows](https://www.testmuai.com/support/docs/local-testing-for-windows/)
+- [Local Testing on macOS](https://www.testmuai.com/support/docs/local-testing-for-macos/)
+- [Local Testing on Linux](https://www.testmuai.com/support/docs/local-testing-for-linux/)
 
-### When to Take Screenshots
+Add the following to your capabilities:
 
-- After critical user interactions
-- Before and after form submissions
-- At different viewport sizes
-- After page state changes
-
-### Cypress-Specific Tips
-
-- Use `cy.wait()` before screenshots for dynamic content
-- Take screenshots after `cy.visit()` completes
-- Use `cy.viewport()` to test responsive designs
-- Combine with Cypress commands for better test flow
-
-### Example: Screenshot After Interaction
-
-```javascript
-describe('Homepage Tests', () => {
-  beforeEach(() => {
-    cy.visit('https://www.lambdatest.com')
-  })
-
-  it('Homepage Visual Test', () => {
-    cy.smartuiSnapshot('homepage-initial')
-    
-    // Interact with page
-    cy.get('#search').type('Cypress')
-    cy.wait(1000) // Wait for results
-    
-    cy.smartuiSnapshot('homepage-after-search')
-  })
-})
+```js
+tunnel: true,
 ```
 
-## Common Use Cases
+## Contributions
 
-### Responsive Testing
+Contributions are welcome. Open an issue to discuss your idea before submitting a pull request. When reporting bugs, include your Node.js version, OS, and Cypress version.
 
-```javascript
-describe('Responsive Tests', () => {
-  it('Desktop View', () => {
-    cy.viewport(1920, 1080)
-    cy.visit('https://www.lambdatest.com')
-    cy.smartuiSnapshot('homepage-desktop')
-  })
+## TestMu AI (Formerly LambdaTest) Community
 
-  it('Tablet View', () => {
-    cy.viewport(768, 1024)
-    cy.visit('https://www.lambdatest.com')
-    cy.smartuiSnapshot('homepage-tablet')
-  })
+Connect with testers and developers in the [TestMu AI Community](https://community.testmuai.com/). Ask questions, share what you are building, and discuss best practices in test automation and DevOps.
+  
+## TestMu AI (Formerly LambdaTest) Certifications
 
-  it('Mobile View', () => {
-    cy.viewport(375, 667)
-    cy.visit('https://www.lambdatest.com')
-    cy.smartuiSnapshot('homepage-mobile')
-  })
-})
-```
+Earn free [TestMu AI Certifications](https://www.testmuai.com/certifications/) for testers, developers, and QA engineers. Validate your skills in Selenium, Cypress, Playwright, Appium, Espresso and more. Industry-recognized, shareable on LinkedIn, and built by practitioners, not marketers.
 
-### Multi-Step Flow Testing
+## Learning Resources by TestMu AI (Formerly LambdaTest)
 
-```javascript
-describe('Checkout Flow', () => {
-  it('Complete Checkout Visual Test', () => {
-    cy.visit('https://example.com/checkout')
-    cy.smartuiSnapshot('checkout-step-1')
-    
-    cy.get('#next-step').click()
-    cy.wait(500)
-    cy.smartuiSnapshot('checkout-step-2')
-    
-    cy.get('#complete').click()
-    cy.wait(1000)
-    cy.smartuiSnapshot('checkout-complete')
-  })
-})
-```
+Learn modern testing through tutorials, guides, videos, and weekly updates:
 
-## CI/CD Integration
+* [TestMu AI Blog](https://www.testmuai.com/blog/)
+* [TestMu AI Learning Hub](https://www.testmuai.com/learning-hub/)
+* [TestMu AI on YouTube](https://www.youtube.com/@TestMuAI)
+* [TestMu AI Newsletter](https://www.testmuai.com/newsletter/)
+  
+## LambdaTest is Now TestMu AI
 
-### GitHub Actions Example
+On **January 12, 2026**, [LambdaTest evolved to TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/), the world's first fully autonomous **Agentic AI Quality Engineering Platform**.
 
-```yaml
-name: Cypress SmartUI Tests
+Same team. Same infrastructure. Same customer accounts. All existing LambdaTest logins, scripts, capabilities, and integrations continue to work without change.
 
-on: [push, pull_request]
+ð Find the new home for [LambdaTest](https://www.testmuai.com).
 
-jobs:
-  visual-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Run Cypress with SmartUI
-        env:
-          PROJECT_TOKEN: ${{ secrets.SMARTUI_PROJECT_TOKEN }}
-        run: |
-          npx smartui exec -- npx cypress run --spec cypress/e2e/smartuiSDKLocal.cy.js --browser chrome --headed
-```
+### How LambdaTest Evolved into TestMu AI
 
-## Troubleshooting
+In 2017, we launched LambdaTest with a simple mission: make testing fast, reliable, and accessible. As LambdaTest grew, we expanded into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the full depth of the testing lifecycle.
 
-### Issue: `cy.smartuiSnapshot is not a function`
+As software development entered the AI era, testing had to evolve, too. We rebuilt the architecture to be AI-native from the ground up, with autonomous agents that **plan, author, execute, analyze, and optimize tests** while keeping humans in the loop. The platform integrates with your repos, CI, IDEs, and terminals, continuously learning from every code change and development signal.
 
-**Solution**: Ensure the driver is imported in `cypress/support/e2e.js`:
-```javascript
-import '@lambdatest/cypress-driver'
-```
+That evolution earned a new name: **TestMu AI**, built for an AI-first future of quality engineering. TestMu is not a new name for us. It is the name of our annual community conference, which has brought together 100,000+ quality engineers to discuss how AI would reshape testing, long before that became an industry norm. 
 
-### Issue: Screenshots not captured
+What started as a high-performance cloud testing platform has transformed into an AI-native, multi-agent system powering a connected, end-to-end quality layer. That evolution defined a new identity: LambdaTest evolved into TestMu AI, built for an AI-first future of quality engineering.
 
-**Solution**:
-1. Verify `PROJECT_TOKEN` is set
-2. Check Cypress version (requires >= 10.0.0)
-3. Ensure test completes successfully
-4. Wait a few moments for processing
+## Support
 
-### Issue: `Cypress version mismatch`
-
-**Solution**: Install compatible Cypress version:
-```bash
-npm install cypress@^13
-```
-
-### Issue: Timeout errors
-
-**Solution**: Add waits before screenshots:
-```javascript
-cy.visit('https://example.com')
-cy.wait(2000) // Wait for page load
-cy.smartuiSnapshot('screenshot')
-```
-
-## Configuration Tips
-
-### Optimizing `smartui-web.json` for Cypress
-
-```json
-{
-  "web": {
-    "browsers": ["chrome", "firefox", "edge"],
-    "viewports": [
-      [1920, 1080],
-      [1366, 768],
-      [375, 667]
-    ],
-    "waitForPageRender": 30000,
-    "waitForTimeout": 2000
-  }
-}
-```
-
-## View Results
-
-After running the tests, visit your SmartUI project dashboard to view the captured screenshots and compare them with baseline builds.
-
-## Additional Resources
-
-- [SmartUI Cypress Onboarding Guide](https://www.testmuai.com/support/docs/smartui-onboarding-cypress/)
-- [Cypress Documentation](https://docs.cypress.io/)
-- [TestMu AI Cypress Documentation](https://www.testmuai.com/support/docs/cypress-testing/)
-- [SmartUI Dashboard](https://smartui.lambdatest.com/)
-- [TestMu AI Community](https://community.testmuai.com/)
-
-## 🚀 LambdaTest is Now TestMu AI
-
-👋 Welcome to TestMu AI, the next evolution of LambdaTest. As of January 2026, [LambdaTest is Now TestMu AI](https://www.testmuai.com/lambdatest-is-now-testmuai/) - we have evolved from a cross-browser testing cloud into a unified, AI-native quality engineering platform designed for the modern DevOps era.
-
-Whether you have been part of the LambdaTest community for years or are just discovering TestMu AI, our mission remains the same: to help you ship faster with high-scale test execution, autonomous testing, and deep quality analytics.
-
-### 🔄 Our Rebrand Journey
-
-In 2017, we introduced LambdaTest with a clear mission: to become the world's most trusted cloud testing platform. We built a scalable, high-performance test cloud that eliminated flakiness, improved developer feedback cycles, and accelerated release velocity for teams worldwide.
-
-As LambdaTest grew, we expanded the platform into Test Intelligence, Visual Regression Testing, Accessibility Testing, API Testing, and Performance Testing, covering the entire testing lifecycle. These capabilities enabled teams to test any stack, on any technology, at enterprise scale.
-
-Over time, we rebuilt the architecture to be AI-native from the ground up. What began as LambdaTest's high-performance testing cloud has now evolved into TestMu AI, an AI-native, multi-agent platform redefining modern quality engineering.
-
-We chose the name TestMu AI to reflect our shift towards intelligent, autonomous testing. While our identity has changed, our core technology and commitment to the testing community stay the same.
-
-👉 Find [LambdaTest's New Home](https://www.testmuai.com/).
-
-### 🔭 Explore TestMu AI
-
-The same infrastructure LambdaTest customers relied on, now delivered through autonomous AI agents.
-
-- [KaneAI](https://www.testmuai.com/kane-ai/)
-- [Agent-to-Agent Testing](https://www.testmuai.com/agent-to-agent-testing/)
-- [HyperExecute](https://www.testmuai.com/hyperexecute/)
-- [Real Device Cloud](https://www.testmuai.com/real-device-cloud/)
-- [Pricing](https://www.testmuai.com/pricing/)
-- [Documentation](https://www.testmuai.com/support/docs/)
+Got a question? Email [support@testmuai.com](mailto:support@testmuai.com) or chat with us 24x7 from our chat portal.
